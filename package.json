@@ -1,0 +1,26 @@
+{
+  "name": "contacts-project-cse341",
+  "version": "1.0.0",
+  "description": "Contacts Project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BelChaparro/contacts-project-cse341.git"
+  },
+  "author": "Belén Chaparro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BelChaparro/contacts-project-cse341/issues"
+  },
+  "homepage": "https://github.com/BelChaparro/contacts-project-cse341#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
