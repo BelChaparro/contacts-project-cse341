@@ -1,6 +1,6 @@
 # CSE 341 - Project 1: Contacts
 
--  (Live)
+- https://project1-93cj.onrender.com (Live)
 - https://github.com/BelChaparro/contacts-project-cse341.git (GitHub Repository)
 
 ## Description
