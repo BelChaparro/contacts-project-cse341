@@ -1,0 +1,17 @@
+// LOCALHOST
+
+### Full list of contacts
+GET http://localhost:3000/contacts/
+
+### Specific contact by ID
+GET http://localhost:3000/contacts/650f78ba084d1e87d0761351
+
+
+
+// RENDER DEPLOY (Published Link)
+
+### Full list of contacts
+GET https://project1-93cj.onrender.com/contacts
+
+### Specific contact by ID
+GET https://project1-93cj.onrender.com/contacts/650b17d83aedb0e8c7c7f035
