@@ -25,8 +25,76 @@ const getSingle = async (req, res) => {
   });
 };
 
+// createContact async function:
+const createContact = async (req, res) => {
+  const contact = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    favoriteColor: req.body.favoriteColor,
+    birthday: req.body.birthday
+  };
+  const response = await mongodb
+    .getDatabase()
+    .db()
+    .collection("contacts")
+    .insertOne(contact); // _ for object id
+  if (response.acknowledge) {
+    res.status(204).send();
+  } else {
+    res.status(500).json(response.error || "There was an error while creating the user.");
+  }
+};
+
+// updateContact async function:
+const updateContact = async (req, res) => {
+  const contactId = new ObjectId(req.params.id);
+  const contact = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    favoriteColor: req.body.favoriteColor,
+    birthday: req.body.birthday
+  };
+  const response = await mongodb
+    .getDatabase()
+    .db()
+    .collection("contacts")
+    .replaceOne({ _id: contactId }, contact); // _ for object id
+  if (response.modifiedCount > 0) {
+    res.status(204).send();
+  } else {
+    res.status(500).json(response.error || "There was an error while updating the user.");
+  }
+};
+
+// deleteContact async function:
+const deleteContact = async (req, res) => {
+  const contactId = new ObjectId(req.params.id);
+  const contact = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    favoriteColor: req.body.favoriteColor,
+    birthday: req.body.birthday
+  };
+  const response = await mongodb
+    .getDatabase()
+    .db()
+    .collection("contacts")
+    .remove({ _id: contactId }, contact); // _ for object id
+  if (response.deletedCount > 0) {
+    res.status(204).send();
+  } else {
+    res.status(500).json(response.error || "There was an error while updating the user.");
+  }
+};
+
 // Export functions:
 module.exports = {
     getAll,
-    getSingle
+    getSingle,
+    createContact,
+    updateContact,
+    deleteContact
   };
