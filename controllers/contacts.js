@@ -4,6 +4,7 @@ const ObjectId = require("mongodb").ObjectId;
 
 // getAll async function:
 const getAll = async (req, res) => {
+  //#swagger.tags=['Contacts']
   const result = await mongodb.getDatabase().db().collection("contacts").find();
   result.toArray().then((contacts) => {
     res.setHeader("Content-Type", "application/json");
@@ -13,6 +14,7 @@ const getAll = async (req, res) => {
 
 // getSingle async function:
 const getSingle = async (req, res) => {
+  //#swagger.tags=['Contacts']
   const contactId = new ObjectId(req.params.id);
   const result = await mongodb
     .getDatabase()
@@ -27,6 +29,7 @@ const getSingle = async (req, res) => {
 
 // createContact async function:
 const createContact = async (req, res) => {
+  //#swagger.tags=['Contacts']
   const contact = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -48,6 +51,7 @@ const createContact = async (req, res) => {
 
 // updateContact async function:
 const updateContact = async (req, res) => {
+  //#swagger.tags=['Contacts']
   const contactId = new ObjectId(req.params.id);
   const contact = {
     firstName: req.body.firstName,
@@ -70,6 +74,7 @@ const updateContact = async (req, res) => {
 
 // deleteContact async function:
 const deleteContact = async (req, res) => {
+  //#swagger.tags=['Contacts']
   const contactId = new ObjectId(req.params.id);
   const contact = {
     firstName: req.body.firstName,
@@ -82,7 +87,7 @@ const deleteContact = async (req, res) => {
     .getDatabase()
     .db()
     .collection("contacts")
-    .remove({ _id: contactId }, contact); // _ for object id
+    .deleteOne({ _id: contactId }, contact); // _ for object id
   if (response.deletedCount > 0) {
     res.status(204).send();
   } else {
