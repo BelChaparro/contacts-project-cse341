@@ -1,17 +1,70 @@
 // LOCALHOST
 
-### Full list of contacts
+### Get full list of contacts
 GET http://localhost:3000/contacts/
 
-### Specific contact by ID
-GET http://localhost:3000/contacts/650f78ba084d1e87d0761351
+### Get specific contact by ID
+GET http://localhost:3000/contacts/65aab736ab2b0dff4f75959b
 
+### Create new contact
+POST http://localhost:3000/contacts HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "Sylvie",
+  "lastName": "Beaulie",
+  "email": "sylvie.beaulie@gmail.com",
+  "favoriteColor": "dark red",
+  "birthday": "04-25-1963"
+}
+
+### Update contact by ID
+PUT http://localhost:3000/contacts/65aab736ab2b0dff4f75959b HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "Lucas Joel",
+  "lastName": "Chaparro",
+  "email": "lucas.chaparro@gmail.com",
+  "favoriteColor": "bright orange",
+  "birthday": "09-19-2003"
+}
+
+### Delete contact by ID
+DELETE http://localhost:3000/contacts/65aac2f8695ca5400a376690 HTTP/1.1
 
 
 // RENDER DEPLOY (Published Link)
 
-### Full list of contacts
+### Get full list of contacts
 GET https://project1-93cj.onrender.com/contacts
 
-### Specific contact by ID
+### Get specific contact by ID
 GET https://project1-93cj.onrender.com/contacts/650b17d83aedb0e8c7c7f035
+
+### Create new contact
+POST https://project1-93cj.onrender.com/contacts HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "Sylvie",
+  "lastName": "Beaulie",
+  "email": "sylvie.beaulie@gmail.com",
+  "favoriteColor": "dark red",
+  "birthday": "04-25-1963"
+}
+
+### Update contact by ID
+PUT https://project1-93cj.onrender.com/contacts/65aab736ab2b0dff4f75959b HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "Lucas Joel",
+  "lastName": "Chaparro",
+  "email": "lucas.chaparro@gmail.com",
+  "favoriteColor": "bright orange",
+  "birthday": "09-19-2003"
+}
+
+### Delete contact by ID
+DELETE https://project1-93cj.onrender.com/contacts/65aac2f8695ca5400a376690 HTTP/1.1
