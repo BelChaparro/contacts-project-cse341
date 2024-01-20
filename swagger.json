@@ -7,8 +7,8 @@
   },
   "host": "project1-93cj.onrender.com",
   "basePath": "/",
-  "scheme": [
-    "https"
+  "schemes": [
+    "http"
   ],
   "paths": {
     "/": {
@@ -170,30 +170,6 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "favoriteColor": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
-                }
-              }
-            }
           }
         ],
         "responses": {
@@ -206,5 +182,8 @@
         }
       }
     }
-  }
+  },
+  "scheme": [
+    "https"
+  ]
 }
