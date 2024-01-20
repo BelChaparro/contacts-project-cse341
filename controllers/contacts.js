@@ -42,7 +42,7 @@ const createContact = async (req, res) => {
     .db()
     .collection("contacts")
     .insertOne(contact); // _ for object id
-  if (response.acknowledge) {
+  if (response.acknowledged) {
     res.status(204).send();
   } else {
     res.status(500).json(response.error || "There was an error while creating the user.");
