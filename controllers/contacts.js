@@ -8,23 +8,36 @@ const getAll = async (req, res) => {
   const result = await mongodb.getDatabase().db().collection("contacts").find();
   result.toArray().then((contacts) => {
     res.setHeader("Content-Type", "application/json");
-    res.status(200).json(contacts).bodyParser;
+    if (contacts.length > 0) {
+      res.status(200).json(contacts).bodyParser;
+    } else {
+      res.status(500).json(result.error || "There was an error while fetching all users.");
+    }
   });
 };
 
 // getSingle async function:
 const getSingle = async (req, res) => {
   //#swagger.tags=['Contacts']
+  // Validate contact ID:
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json("You must use a valid contact ID to find a contact.")
+  }
   const contactId = new ObjectId(req.params.id);
   const result = await mongodb
     .getDatabase()
     .db()
     .collection("contacts")
     .find({ _id: contactId }); // _ for object id
-  result.toArray().then((contacts) => {
-    res.setHeader("Content-Type", "application/json");
-    res.status(200).json(contacts[0]);
-  });
+    result.toArray().then((contacts) => {
+        res.setHeader("Content-Type", "application/json");
+        if (contacts.length > 0) {
+          res.status(200).json(contacts[0]);
+        } else {
+          res.status(500).json(result.error || "There was an error while fetching the user.");
+        }
+    });
+    
 };
 
 // createContact async function:
@@ -52,6 +65,10 @@ const createContact = async (req, res) => {
 // updateContact async function:
 const updateContact = async (req, res) => {
   //#swagger.tags=['Contacts']
+  // Validate contact ID:
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json("You must use a valid contact ID to update a contact.")
+  }
   const contactId = new ObjectId(req.params.id);
   const contact = {
     firstName: req.body.firstName,
@@ -75,6 +92,10 @@ const updateContact = async (req, res) => {
 // deleteContact async function:
 const deleteContact = async (req, res) => {
   //#swagger.tags=['Contacts']
+  // Validate contact ID:
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json("You must use a valid contact ID to delete a contact.")
+  }
   const contactId = new ObjectId(req.params.id);
   const response = await mongodb
     .getDatabase()
@@ -84,7 +105,7 @@ const deleteContact = async (req, res) => {
   if (response.deletedCount > 0) {
     res.status(204).send();
   } else {
-    res.status(500).json(response.error || "There was an error while updating the user.");
+    res.status(500).json(response.error || "There was an error while deleting the user.");
   }
 };
 
